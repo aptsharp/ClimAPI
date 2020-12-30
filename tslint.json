@@ -17,7 +17,6 @@
       true,
       "Component",
       "Page"
-      // diferença entre componente e pagina
     ],
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
