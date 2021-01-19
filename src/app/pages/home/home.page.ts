@@ -13,7 +13,6 @@ export class HomePage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.searchControl = new FormControl('', Validators.required); //desabilita o campo caso não tenha nenhuma informação.
+    this.searchControl = new FormControl('', Validators.required);
   }
-
 }
