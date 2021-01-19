@@ -4,7 +4,7 @@
             <label>Pesquisar</label>
             <div>
                 <input class="form-control" [formControl]="searchControl">
-                <button class="btn btn-dark">Pesquisar</button>
+                <button class="btn btn-dark" [disabled]="!searchControl.value" (click)="doSearch()">Pesquisar</button>
             </div>
         </div>
 

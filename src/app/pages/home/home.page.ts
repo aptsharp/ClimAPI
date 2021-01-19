@@ -15,4 +15,9 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.searchControl = new FormControl('', Validators.required);
   }
+
+  doSearch(){
+    console.log(this.searchControl.value);
+  }
+
 }
