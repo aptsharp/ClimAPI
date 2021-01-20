@@ -26,7 +26,7 @@ export class WeatherService {
   private doGet<T>(url: string, params: HttpParams): Observable<T> {
     params = params.append('appid', environment.apiKey);
     params = params.append('lang', 'pt_br');
-    return this.http.get<T>('api.openweathermap.org/data/2.5/${ url }', {params});
+    return this.http.get<T>('https://api.openweathermap.org/data/2.5/${ url }', {params});
   }
 
 }

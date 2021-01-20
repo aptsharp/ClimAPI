@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { HomePage } from './home.page';
 import { ReactiveFormsModule } from '@angular/forms';
 import { homeReducer } from './state/home.reducer';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
+
 
 @NgModule({
   imports: [
@@ -13,6 +15,8 @@ import { homeReducer } from './state/home.reducer';
     ReactiveFormsModule,
     StoreModule.forFeature('home', homeReducer),
     EffectsModule.forFeature([HomeEffects]),
+    ComponentsModule,   
+    
   ],
   declarations: [
     HomePage,

@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { CityWeather } from './../../shared/models/weather.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
@@ -12,6 +14,10 @@ import * as fromHomeSelectors from './state/home.selectors';
 })
 export class HomePage implements OnInit {
 
+  cityWeather$: Observable<CityWeather>;
+  loading$: Observable<boolean>;
+  error$: Observable<boolean>;
+
   searchControl: FormControl;
 
   text: string;
@@ -21,13 +27,15 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.searchControl = new FormControl('', Validators.required);
 
-    this.store.pipe(select(fromHomeSelectors.selectHomeText))
-    .subscribe(text => this.text = text)
+    this.cityWeather$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeather));
+    this.loading$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeatherLoading));
+    this.error$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeatherError));
+
   }
 
   doSearch(){
-    const text = this.searchControl.value;
-    this.store.dispatch(fromHomeActions.changeText({ text }));
+    const query = this.searchControl.value;
+    this.store.dispatch(fromHomeActions.loadCurrentWeather({ query }));
   }
 
 }

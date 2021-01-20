@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="search-container">
         <div class="form-group">
-            <label>{{ text }}</label>
+            <label>Pesquisa</label>
             <div>
                 <input class="form-control" [formControl]="searchControl">
                 <button class="btn btn-dark" [disabled]="!searchControl.value" (click)="doSearch()">Pesquisar</button>
@@ -13,4 +13,15 @@
         </div>
 
     </div>
+    
+    <jv-loader *ngif="loading$ | async"></jv-loader>
+
+    <div *ngif="!(loading$ | async) && !(error$ | async) && !! (CityWeather$ | async)" >
+        {{ (cityWeather$ | async).city.name }}
+    </div>
+
+    <div *ngif="!(loading$ | async) && error$ | async">
+        <a>Tentar novamente</a>
+    </div>
+
 </div>
