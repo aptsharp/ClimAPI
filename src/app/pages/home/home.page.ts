@@ -30,12 +30,10 @@ export class HomePage implements OnInit {
     this.cityWeather$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeather));
     this.loading$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeatherLoading));
     this.error$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeatherError));
-
   }
 
   doSearch(){
     const query = this.searchControl.value;
     this.store.dispatch(fromHomeActions.loadCurrentWeather({ query }));
   }
-
 }

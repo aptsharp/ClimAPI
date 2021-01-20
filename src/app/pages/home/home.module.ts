@@ -9,14 +9,15 @@ import { homeReducer } from './state/home.reducer';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     StoreModule.forFeature('home', homeReducer),
     EffectsModule.forFeature([HomeEffects]),
-    ComponentsModule,   
-    
+    ComponentsModule,
+       
   ],
   declarations: [
     HomePage,
